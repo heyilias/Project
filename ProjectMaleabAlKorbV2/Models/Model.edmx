@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MalaebAlKorbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admins">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Emails" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Passwords" Type="nvarchar" MaxLength="60" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="messageNo" />
+          </Key>
+          <Property Name="messageNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="emails" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="allMessage" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="dateMessage" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="playerNo" />
+          </Key>
+          <Property Name="playerNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="names" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="emails" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="passwords" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="dateCreated" Type="datetime" />
+        </EntityType>
+        <EntityType Name="playerDeleteData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="allData" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="playerUpdateData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="allData" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="reservationNo" />
+          </Key>
+          <Property Name="reservationNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="reservationTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="reservationDate" Type="date" Nullable="false" />
+          <Property Name="dateReservation" Type="datetime" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="Email" Type="nvarchar" MaxLength="70" />
+          <Property Name="nbrPlayer" Type="int" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Stadium">
+          <Key>
+            <PropertyRef Name="stadiumNo" />
+          </Key>
+          <Property Name="stadiumNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stadiumName" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="stadiumCity" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="stadiumCapacity" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stadiumDeleteData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="allData" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="stadiumUpdateData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="allData" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityContainer Name="MalaebAlKorbModelStoreContainer">
+          <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="playerDeleteData" EntityType="Self.playerDeleteData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="playerUpdateData" EntityType="Self.playerUpdateData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stadium" EntityType="Self.Stadium" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stadiumDeleteData" EntityType="Self.stadiumDeleteData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="stadiumUpdateData" EntityType="Self.stadiumUpdateData" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MalaebAlKorbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="messageNo" />
+          </Key>
+          <Property Name="messageNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emails" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="allMessage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateMessage" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="playerNo" />
+          </Key>
+          <Property Name="playerNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="names" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emails" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passwords" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateCreated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="playerDeleteData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="allData" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="playerUpdateData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="allData" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="reservationNo" />
+          </Key>
+          <Property Name="reservationNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="reservationTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="reservationDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="dateReservation" Type="DateTime" Precision="3" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="nbrPlayer" Type="Int32" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Stadium">
+          <Key>
+            <PropertyRef Name="stadiumNo" />
+          </Key>
+          <Property Name="stadiumNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stadiumName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="stadiumCity" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="stadiumCapacity" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stadiumDeleteData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="allData" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="stadiumUpdateData">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="allData" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="MalaebAlKorbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Contacts" EntityType="Self.Contact" />
+          <EntitySet Name="Players" EntityType="Self.Player" />
+          <EntitySet Name="playerDeleteDatas" EntityType="Self.playerDeleteData" />
+          <EntitySet Name="playerUpdateDatas" EntityType="Self.playerUpdateData" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+          <EntitySet Name="Stadia" EntityType="Self.Stadium" />
+          <EntitySet Name="stadiumDeleteDatas" EntityType="Self.stadiumDeleteData" />
+          <EntitySet Name="stadiumUpdateDatas" EntityType="Self.stadiumUpdateData" />
+          <EntitySet Name="Admins" EntityType="MalaebAlKorbModel.Admin" />
+        </EntityContainer>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Emails" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Passwords" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MalaebAlKorbModelStoreContainer" CdmEntityContainer="MalaebAlKorbEntities">
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="MalaebAlKorbModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="messageNo" ColumnName="messageNo" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="emails" ColumnName="emails" />
+                <ScalarProperty Name="allMessage" ColumnName="allMessage" />
+                <ScalarProperty Name="dateMessage" ColumnName="dateMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="MalaebAlKorbModel.Player">
+              <MappingFragment StoreEntitySet="Player">
+                <ScalarProperty Name="playerNo" ColumnName="playerNo" />
+                <ScalarProperty Name="names" ColumnName="names" />
+                <ScalarProperty Name="emails" ColumnName="emails" />
+                <ScalarProperty Name="passwords" ColumnName="passwords" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="playerDeleteDatas">
+            <EntityTypeMapping TypeName="MalaebAlKorbModel.playerDeleteData">
+              <MappingFragment StoreEntitySet="playerDeleteData">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="allData" ColumnName="allData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="playerUpdateDatas">
+            <EntityTypeMapping TypeName="MalaebAlKorbModel.playerUpdateData">
+              <MappingFragment StoreEntitySet="playerUpdateData">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="allData" ColumnName="allData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="MalaebAlKorbModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="reservationNo" ColumnName="reservationNo" />
+                <ScalarProperty Name="reservationTime" ColumnName="reservationTime" />
+                <ScalarProperty Name="reservationDate" ColumnName="reservationDate" />
+                <ScalarProperty Name="dateReservation" ColumnName="dateReservation" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="nbrPlayer" ColumnName="nbrPlayer" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stadia">
+            <EntityTypeMapping TypeName="MalaebAlKorbModel.Stadium">
+              <MappingFragment StoreEntitySet="Stadium">
+                <ScalarProperty Name="stadiumNo" ColumnName="stadiumNo" />
+                <ScalarProperty Name="stadiumName" ColumnName="stadiumName" />
+                <ScalarProperty Name="stadiumCity" ColumnName="stadiumCity" />
+                <ScalarProperty Name="stadiumCapacity" ColumnName="stadiumCapacity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stadiumDeleteDatas">
+            <EntityTypeMapping TypeName="MalaebAlKorbModel.stadiumDeleteData">
+              <MappingFragment StoreEntitySet="stadiumDeleteData">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="allData" ColumnName="allData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stadiumUpdateDatas">
+            <EntityTypeMapping TypeName="MalaebAlKorbModel.stadiumUpdateData">
+              <MappingFragment StoreEntitySet="stadiumUpdateData">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="allData" ColumnName="allData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="MalaebAlKorbModel.Admin">
+              <MappingFragment StoreEntitySet="Admins">
+                <ScalarProperty Name="Passwords" ColumnName="Passwords" />
+                <ScalarProperty Name="Emails" ColumnName="Emails" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

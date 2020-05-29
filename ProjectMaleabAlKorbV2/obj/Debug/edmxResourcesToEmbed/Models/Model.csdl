@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MalaebAlKorbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="messageNo" />
+    </Key>
+    <Property Name="messageNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emails" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="allMessage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateMessage" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="playerNo" />
+    </Key>
+    <Property Name="playerNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="names" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emails" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="passwords" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="playerDeleteData">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="allData" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="playerUpdateData">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="allData" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="reservationNo" />
+    </Key>
+    <Property Name="reservationNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reservationTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="reservationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="dateReservation" Type="DateTime" Precision="3" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="nbrPlayer" Type="Int32" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Stadium">
+    <Key>
+      <PropertyRef Name="stadiumNo" />
+    </Key>
+    <Property Name="stadiumNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="stadiumName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="stadiumCity" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="stadiumCapacity" Type="Byte" Nullable="false" />
+  </EntityType>
+  <EntityType Name="stadiumDeleteData">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="allData" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="stadiumUpdateData">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="allData" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="MalaebAlKorbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Contacts" EntityType="Self.Contact" />
+    <EntitySet Name="Players" EntityType="Self.Player" />
+    <EntitySet Name="playerDeleteDatas" EntityType="Self.playerDeleteData" />
+    <EntitySet Name="playerUpdateDatas" EntityType="Self.playerUpdateData" />
+    <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+    <EntitySet Name="Stadia" EntityType="Self.Stadium" />
+    <EntitySet Name="stadiumDeleteDatas" EntityType="Self.stadiumDeleteData" />
+    <EntitySet Name="stadiumUpdateDatas" EntityType="Self.stadiumUpdateData" />
+    <EntitySet Name="Admins" EntityType="MalaebAlKorbModel.Admin" />
+  </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Emails" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Passwords" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

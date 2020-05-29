@@ -1,0 +1,370 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="exampleSlider">
+    <div>
+
+    </div>
+    <div>
+
+    </div>
+    <div>
+
+    </div>
+</div>
+<div class="container">
+    <div id="loginbox" class="mainbox col-md-4 col-md-offset-3 col-sm-4 col-sm-offset-2 col-xs-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">FIND YOUR PLAY</div>
+
+            </div>
+
+            <div style="padding-top:30px" class="panel-body">
+
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                <form id="loginform" class="form-horizontal" role="form">
+
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-map-marker"></i></span>
+                        <select class="form-control combobox_ville">
+                            <option value="kech">Marrakech</option>
+                            <option value="casa">Casablanca</option>
+                            <option value="rabat">Rabat</option>
+                            <option value="tanger">Tanger</option>
+
+                        </select>
+                    </div>
+
+                    <div style="margin-top:10px" class="form-group">
+                        @{
+                            Html.RenderPartial("btnReservation");
+                        }
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- banner-bottom -->
+<div class="banner-bottom">
+    <div class="container">
+        <div class="col-md-6 mak_banner_bottom_left">
+            <div class="mak_banner_bottom_right1">
+                <h2>FIND YOUR PLAY</h2>
+                <p>Find sports facilities from football pitches courts in a range of cities.</p>
+                <p>Choose a city to get started</p>
+                <ul class="some_agile_facts">
+                    <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Choose your Stadium.</li>
+                    <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Choose the time</li>
+                    <li><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Play</li>
+
+                </ul>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <div class="col-md-6 mak_banner_bottom_right">
+            <section class="slider">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <div class="agileits_design_banner_bottom_grid">
+                                <img src="~/images/1.jpeg" alt="image1" class="img-responsive" />
+                            </div>
+
+                        </li>
+                        <li>
+                            <div class="agileits_design_banner_bottom_grid">
+                                <img src="~/images/2.jpg" alt=" " class="img-responsive" />
+                            </div>
+                        </li>
+                        <li>
+                            <div class="agileits_design_banner_bottom_grid">
+                                <img src="~/images/3.jpg" alt=" " class="img-responsive" />
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<!-- //banner-bottom -->
+<!-- middle -->
+<div class="middle-Mk">
+    <div class="col-md-3 mak-special-img text_info">
+        <h4>Stadiums</h4>
+    </div>
+    <div class="col-md-3 mak-special-img Mk-grid-1">
+        <div class="mak-special-text effect-1">
+            <h4>Stadium 1</h4>
+        </div>
+    </div>
+    <div class="col-md-3 mak-special-img Mk-grid-2">
+        <div class="mak-special-text effect-1">
+            <h4>Stadium 2</h4>
+
+        </div>
+    </div>
+    <div class="col-md-3 mak-special-img Mk-grid-3">
+        <div class="mak-special-text effect-1">
+            <h4>Stadium 3</h4>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
+<!-- //middle -->
+<div class="testimonials" id="latestNews">
+    <div class="container">
+        <h3 class="Mk_header maak_agileits_header">Latest <span>News</span></h3>
+        <p class="sub_para_agile">Keep up with the latest news and blogs from Malaeb Al Korb</p>
+        <div class="agile_team_grids_top">
+            <div class="col-md-4 maak_agile_services_grid">
+                <div class="agile_services_grid1 wthree_services_grid1">
+                    <div class="agile_services_grid1_sub">
+                        <p>30 March 2020</p>
+                    </div>
+
+                </div>
+                <div class="agileits_design_services_grid1">
+                    <div class="maak_agileits_services_grid1">
+                        <div class="maak_agileits_services_grid1l">
+                            <img src="images/6.png" alt=" " class="img-responsive">
+                        </div>
+                        <div class="maak_agileits_services_grid1r">
+                            <ul>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <h4>
+                        <a href="#" data-toggle="modal" data-target="#myModal">mak's Top 5 Sport Documentaries</a>
+                    </h4>
+                    <p>
+                        Following strict government to stay at home to help stop the spread of COVID-19
+                        we take a look at 5 of our top-ranked sport documentaries.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 maak_agile_services_grid">
+                <div class="agile_services_grid1 wthree_services_grid2">
+                    <div class="agile_services_grid1_sub">
+                        <p>03 April 2020</p>
+                    </div>
+
+                </div>
+                <div class="agileits_design_services_grid1">
+                    <div class="maak_agileits_services_grid1">
+                        <div class="maak_agileits_services_grid1l">
+                            <img src="images/2.png" alt=" " class="img-responsive">
+                        </div>
+                        <div class="maak_agileits_services_grid1r">
+                            <ul>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <h4>
+                        <a href="#" data-toggle="modal" data-target="#myModal">
+                            Esports: The new lockdown platform
+                            for Sports Stars?
+                        </a>
+                    </h4>
+                    <p>
+                        The way in which we consume sport is being forced to evolve.
+                        So, in a world without live sport – what is the temporary antidote?
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4 maak_agile_services_grid">
+                <div class="agile_services_grid1 wthree_services_grid3">
+                    <div class="agile_services_grid1_sub">
+                        <p>07 April 2020</p>
+                    </div>
+
+                </div>
+                <div class="agileits_design_services_grid1">
+                    <div class="maak_agileits_services_grid1">
+                        <div class="maak_agileits_services_grid1l">
+                            <img src="images/1.png" alt=" " class="img-responsive">
+                        </div>
+                        <div class="maak_agileits_services_grid1r">
+                            <ul>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star-half-o" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                                <li><i class="fa fa-star-o" aria-hidden="true"></i></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <h4>
+                        <a href="#" data-toggle="modal" data-target="#myModal">Did we take sport for granted?</a>
+                    </h4>
+                    <p>
+                        The coronavirus crisis has stopped us all from playing sport for now -
+                        will it change how we think about it in the future?.
+                    </p>
+                </div>
+            </div>
+
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<!-- bootstrap-pop-up -->
+<div class="modal video-modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="signin-form profile">
+                <h3 class="agileinfo_sign">Malaeb Al Korb</h3>
+                <div class="modal-body">
+                    <img src="images/g1.jpg" alt=" " class="img-responsive" />
+                    <p>
+                        On 6th March, we at Playfinder received the first cancellation of a booking due to
+                        coronavirus; on 9th March the first sports venue closed, a school; on 16th March the FA
+                        banned football at all levels, and finally on the 23rd March unmanned park tennis courts
+                        closed their gates to the public.
+
+                        If you had told me this would happen I would have guessed it was some sci-fi plot — which,
+                        it turns out, it is — but this is the situation we are in and it has affected everything
+                        that we know. Our worlds have shrunk as we focus on personal issues like our families and
+                        health; while wider issues such as the NHS, government support for people and businesses,
+                        and the country’s resolve occupy national discourse. In being forced to stay at home, we are
+                        learning what we once took for granted..
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //bootstrap-pop-up -->
+<!-- gallery -->
+<div class="gallery" id="glly">
+    <h3 class="Mk_header maak_agileits_header">Latest <span>Gallery</span></h3>
+    <div class="agile_team_grids_top">
+        <ul id="flexiselDemo1">
+            <li>
+                <div class="wthree_gallery_grid">
+                    <a href="~/images/g1.jpg" class="lsb-preview" data-lsb-group="header">
+                        <div class="view second-effect">
+                            <img src="~/images/g1.jpg" alt="" class="img-responsive" />
+                            <div class="mask">
+                                <p>Malaeb Al Korb</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="wthree_gallery_grid">
+                    <a href="~/images/g2.jpg" class="lsb-preview" data-lsb-group="header">
+                        <div class="view second-effect">
+                            <img src="~/images/g2.jpg" alt="" class="img-responsive" />
+                            <div class="mask">
+                                <p>Malaeb Al Korb</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="wthree_gallery_grid">
+                    <a href="~/images/g3.jpg" class="lsb-preview" data-lsb-group="header">
+                        <div class="view second-effect">
+                            <img src="~/images/g3.jpg" alt="" class="img-responsive" />
+                            <div class="mask">
+                                <p>Malaeb Al Korb</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="wthree_gallery_grid">
+                    <a href="~/images/g4.jpg" class="lsb-preview" data-lsb-group="header">
+                        <div class="view second-effect">
+                            <img src="~/images/g4.jpg" alt="" class="img-responsive" />
+                            <div class="mask">
+                                <p>Malaeb Al Korb</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="wthree_gallery_grid">
+                    <a href="~/images/g5.jpg" class="lsb-preview" data-lsb-group="header">
+                        <div class="view second-effect">
+                            <img src="~/images/g5.jpg" alt="" class="img-responsive" />
+                            <div class="mask">
+                                <p>Malaeb Al Korb</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- //gallery -->
+<!-- Partners -->
+<div class="testimonials" id="partners">
+    <div class="container">
+        <h3 class="Mk_header maak_agileits_header">Our <span>Partners</span></h3>
+        <div class="mak_testimonials_grids">
+            <section class="center slider">
+                <div class="agileits_testimonial_grid">
+                    <div class="Mk_testimonial_grid">
+                        <h4>AGAINAN</h4>
+                        <h5>Professeur</h5>
+                        <div class="Mk_testimonial_grid_pos">
+                            <img src="~/images/1.png" alt=" " class="img-responsive" />
+                        </div>
+                    </div>
+                </div>
+                <div class="agileits_testimonial_grid">
+                    <div class="Mk_testimonial_grid">
+                        <h4>Zakaria AJOUIL</h4>
+                        <h5>Professeur</h5>
+                        <div class="Mk_testimonial_grid_pos">
+                            <img src="~/images/2.png" alt=" " class="img-responsive" />
+                        </div>
+                    </div>
+                </div>
+                <div class="agileits_testimonial_grid">
+                    <div class="Mk_testimonial_grid">
+                        <h4>Abdelfatah SAMIR</h4>
+                        <h5>Professeur</h5>
+                        <div class="Mk_testimonial_grid_pos">
+                            <img src="~/images/3.png" alt=" " class="img-responsive" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<!-- //Partners -->

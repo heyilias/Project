@@ -1,0 +1,36 @@
+﻿
+@if (Session["emails"] == null)
+{
+    <li>
+        <a href="#" data-toggle="modal" data-target="#myModal3">
+            <i class="fa fa-user"
+               aria-hidden="true"></i> Log in
+        </a>
+    </li>
+    <li>
+        <a href="#" data-toggle="modal" data-target="#myModal2" onclick="singUp()">
+            <i class="fa fa-pencil-square-o"
+               aria-hidden="true"></i> Sign up
+        </a>
+    </li>
+
+}
+else
+{
+    <li>
+        <a href="#">
+            <i class="fa fa-user"
+               aria-hidden="true"></i> Welcome @Session["emails"] 
+        </a>
+    </li>
+    <li>
+        <a href="/Home/LogOut">
+            <i class="fa fa-sign-out"
+               aria-hidden="true"></i> LogOut
+        </a>
+    </li>
+}
+
+
+
+

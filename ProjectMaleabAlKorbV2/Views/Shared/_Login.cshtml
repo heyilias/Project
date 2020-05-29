@@ -1,0 +1,92 @@
+﻿@model ProjectMaleabAlKorbV2.Models.Player
+
+<!---------------------------sign in---------------------------------->
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                <div class="signin-form profile">
+                    <h3 class="agileinfo_sign">Login</h3>
+                    <div class="login-form">
+                        <form method="post" id="frmLogin">
+                            <div id="msg" style="display:none"><ul style="color:red">Invalid Username or Password</ul></div>
+                            @Html.TextBoxFor(p => p.emails, new { @id = "regEmails", @placeholder = "Emails", @name = "email", @type = "text", @required = "" })
+                            @Html.TextBoxFor(p => p.passwords, new { @id = "regPassword", @placeholder = "Password", @name = "password", @type = "password", @required = "" })
+                            <div class="tp">
+                                <button class="btn btn-info form-control" type="button" onclick="Login()">Login</button>
+                                <!--a href="/Home/Logins" class="btn btn-info form-control" >Login</a-->
+                            </div>
+                            <br>
+                            <div class="remember">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="rememberMe">
+                                    Remember me
+                                </label>
+                                <a href="#" class="pull-right">Forgot Password?</a>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="login-social-grids">
+                        <ul>
+                            <li><a href="#" onclick="showNotify()"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#" onclick="showNotify()"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#" onclick="showNotify()"><i class="fa fa-rss"></i></a></li>
+                        </ul>
+                    </div>
+                    <p><a href="#" data-toggle="modal" data-target="#myModal3"> Don't have an account?</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //Modal1 -->
+
+<style>
+
+    .custom-checkbox {
+        position: relative;
+        right: 105px;
+    }
+
+    @@media(max-width: 600px) {
+        .custom-checkbox {
+            position: absolute;
+            right: 0;
+        }
+    }
+</style>
+
+<script>
+    //Login System
+    
+
+    function Login() {
+
+        var data = $('#frmLogin').serialize();
+        $.ajax({
+            type: "post",
+            url: "/Home/Login_Verifier",
+            data: data,
+            success: function (result) {
+                if (result == "fail") {
+                    $('#frmLogin')[0].reset();
+                    $('#msg').show();
+                    alert("not successfully !!" + result);
+                }
+                else {
+                    //var x = $('#regEmails').val();
+                    //var y = $('#regEmails').val();
+                    $('#msg').hide();
+                    document.location.href = "/Home/Index";
+                    alert('Login Success !!');
+                    if ($('#rememberMe').checked) {
+
+                    }
+                }
+            }
+        })
+    }
+</script>

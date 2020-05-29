@@ -1,0 +1,177 @@
+﻿@model ProjectMaleabAlKorbV2.Models.Contact
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_AdminPage.cshtml";
+}
+
+<div class="col-md-12 content-top-2 card">
+
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            All Contact
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <a href="#" class="btn btn-info" onclick="AddNewRegisters(0)">Add New Contact</a>
+                <br /><br />
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>message No</th>
+                            <th>Names</th>
+                            <th>Email</th>
+                            <th>Messages</th>
+                            <th>Action(Edit)</th>
+                            <th>Action(Delete)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="SetContactList">
+                        <tr id="LoadingStatus" style="color:red"></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    @*Create a PopUp Modal With Contact Form for Add & Edit Player Record*@
+    <div class="modal fade" id="myModalpop" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h4 id="ModalTitle"></h4>
+                </div>
+                <div class="modal-body">
+                    <form id="form">
+                        <fieldset id="submitForm">
+                            @Html.HiddenFor(c => c.messageNo, new { @id = "ctnID" })
+                            <div class="form-group">
+                                @Html.TextBoxFor(c => c.name , new { @id = "cntName", @class = "form-control", @placeholder = "Name" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(c => c.emails, new { @id = "email", @class = "form-control", @placeholder = "Email" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextAreaFor(c => c.allMessage, new { @id = "allMsg", @class = "form-control", @placeholder = "Message" })
+                            </div>
+                            <div class="form-group">
+                                <a class="btn btn-block btn-danger" id="saveContact">Save</a>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Create A PopUp Modal For DeleteConfirmation*@
+
+    <div class="modal fade" id="DeleteConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h4>Delete Contact</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="hs">Are You Sure? You Want To Delete This Player.</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-primary" data-dismiss="modal" id="r">Cancle</a>
+                    <a href="#" class="btn btn-danger" onclick="ConfirmDelete()">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!--Contenu De la pge-->
+
+<script>
+    $('LoadingStatus').html('Loading....');
+    $.get('/Admin/GetContactList', null, DataBind);
+
+    function DataBind(ContactList) {
+        var setData = $('#SetContactList');
+        for (var i = 0; i < ContactList.length; i++) {
+            var Data = '<tr class="row_' + ContactList[i].messageNo + '"><td>' +
+                ContactList[i].messageNo + '</td><td>' +
+                ContactList[i].name + '</td><td>' +
+                ContactList[i].emails + '</td><td>' +
+                ContactList[i].allMessage + '</td>' +
+                '<td><a href="#" class="btn btn-warning" style="text-align:center;" onclick="EditContact(' + ContactList[i].messageNo + ')"><span class="glyphicon glyphicon-edit"></span></a></td>' +
+                '<td><a href="#" class="btn btn-danger" onclick="DeleteContact(' + ContactList[i].messageNo + ')"><span class="glyphicon glyphicon-trash"></span></a></td>' +
+                '</tr>';
+            setData.append(Data);
+            $('LoadingStatus').html('Loading....');
+        }
+    }
+
+    //show the Popup for add new Player
+    function AddNewRegisters(messageNo) {
+        $('#form')[0].reset();
+        $('#ctnID').val(0);
+        $('#ModalTitle').html("Add New Contact");
+        $('#myModalpop').modal();
+    }
+
+    $('#saveContact').click(function () {
+        var data = $("#submitForm").serialize();
+        $.ajax({
+            type: "Post",
+            url: "/Admin/SaveDataInDatabaseContact",
+            data: data,
+            success: function (result) {
+                alert("Success!..");
+                window.location.href = "/Admin/Contact";
+                $("#myModalpop").modal("hide");
+
+            }
+        })
+    });
+
+
+    //show the Popup for Edit student
+    function EditContact(messageNo) {
+        var url = "/Admin/GetContactById?messageNo=" + messageNo;
+        $('#ModalTitle').html("Update Contact");
+        $('#myModalpop').modal();
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+                var obj = JSON.parse(data);
+                $('#ctnID').val(obj.messageNo);
+                $('#ctnName').val(obj.name);
+                $('#email').val(obj.emails);
+                $('#allMsg').val(obj.allMessage);
+                
+            }
+        })
+    }
+
+    //Show The Popup Modal For DeleteComfirmation
+    var DeleteContact = function (playerNo) {
+        $("#ctnID").val(playerNo);
+        $("#DeleteConfirmation").modal("show");
+    }
+    var ConfirmDelete = function () {
+        var cntID = $("#ctnID").val();
+        $.ajax({
+            type: "POST",
+            url: "/Admin/DeleteContact?messageNo=" + cntID,
+            success: function (result) {
+                $(".row_" + cntID).remove();
+                alert("Deleted successfully !!");
+                window.location.href = "/Admin/Contact";
+                $("#DeleteConfirmation").modal("hide");
+            }
+        })
+    }
+
+
+
+</script>

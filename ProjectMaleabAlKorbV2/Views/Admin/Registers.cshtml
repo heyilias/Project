@@ -1,0 +1,182 @@
+﻿@model ProjectMaleabAlKorbV2.Models.Player
+@{
+    ViewBag.Title = "Registers";
+    Layout = "~/Views/Shared/_AdminPage.cshtml";
+}
+
+<!--Contenu De la page-->
+<div class="row-one widgettable">
+    <div class="col-md-12 content-top-2 card">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                All Registrations
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <a href="#" class="btn btn-info" onclick="AddNewRegisters(0)">Add New Register</a>
+                    <br /><br />
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Player ID</th>
+                                <th>Names</th>
+                                <th>Email</th>
+                                <th>Passwords</th>
+                                <th>Phone</th>
+                                <th>Action(Edit)</th>
+                                <th>Action(Delete)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="SetPlayerList">
+                            <tr id="LoadingStatus" style="color:red"></tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @*Create a PopUp Modal With Registration Form for Add & Edit Player Record*@
+    <div class="modal fade" id="myModalpop" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h4 id="ModalTitle"></h4>
+                </div>
+                <div class="modal-body">
+                    <form id="form">
+                        <fieldset id="submitForm">
+                            @Html.HiddenFor(p => p.playerNo, new { @id = "plyID" })
+                            <div class="form-group">
+                                @Html.TextBoxFor(p => p.names, new { @id = "plyName", @class = "form-control", @placeholder = "Name" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(p => p.emails, new { @id = "email", @class = "form-control", @placeholder = "Email" })
+                            </div>
+                            <div class="form-group">
+                                @Html.PasswordFor(p => p.passwords, new { @id = "password", @class = "form-control", @placeholder = "Password" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(p => p.phone, new { @id = "phone", @class = "form-control", @placeholder = "+212 6X XXX XX XX" })
+                            </div>
+                            <div class="form-group">
+                                <a class="btn btn-block btn-danger" id="savePlayer">Save</a>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Create A PopUp Modal For DeleteConfirmation*@
+
+    <div class="modal fade" id="DeleteConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h4>Delete Player</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="hs">Are You Sure? You Want To Delete This Player.</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-primary" data-dismiss="modal" id="r">Cancle</a>
+                    <a href="#" class="btn btn-danger" onclick="ConfirmDelete()">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    $('LoadingStatus').html('Loading....');
+    $.get('/Admin/GetPlyarsList', null, DataBind);
+
+    function DataBind(playerList) {
+        var setData = $('#SetPlayerList');
+        for (var i = 0; i < playerList.length; i++) {
+            var Data = '<tr class="row_' + playerList[i].playerNo + '"><td>' +
+                playerList[i].playerNo + '</td><td>' +
+                playerList[i].names + '</td><td>' +
+                playerList[i].emails + '</td><td>' +
+                playerList[i].passwords + '</td><td>' +
+                playerList[i].phone + '</td>' +
+                '<td><a href="#" class="btn btn-warning" style="text-align:center;" onclick="EditPlayerRecord(' + playerList[i].playerNo + ')"><span class="glyphicon glyphicon-edit"></span></a></td>' +
+                '<td><a href="#" class="btn btn-danger" onclick="DeletePlayerRecord(' + playerList[i].playerNo + ')"><span class="glyphicon glyphicon-trash"></span></a></td>' +
+                '</tr>';
+            setData.append(Data);
+            $('LoadingStatus').html('Loading....');
+        }
+    }
+
+    //show the Popup for add new Player
+    function AddNewRegisters(playerNo) {
+        $('#form')[0].reset();
+        $('#plyID').val(0);
+        $('#ModalTitle').html("Add New Player");
+        $('#myModalpop').modal();
+    }
+
+    $('#savePlayer').click(function () {
+        var data = $("#submitForm").serialize();
+        $.ajax({
+            type: "Post",
+            url: "/Admin/SaveDataInDatabase",
+            data: data,
+            success: function (result) {
+                alert("Success!..");
+                window.location.href = "/Admin/Registers";
+                $("#myModalpop").modal("hide");
+
+            }
+        })
+    });
+
+    //show the Popup for Edit student
+    function EditPlayerRecord(playerNo) {
+        var url = "/Admin/GetPlayerById?playerNo=" + playerNo ;
+        $('#ModalTitle').html("Update Player Record");
+        $('#myModalpop').modal();
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+                var obj = JSON.parse(data);
+                $('#plyID').val(obj.playerNo);
+                $('#plyName').val(obj.names);
+                $('#email').val(obj.emails);
+                $('#password').val(obj.passwords);
+                $('#phone').val(obj.phone);
+                
+            }
+        })
+    }
+
+    //Show The Popup Modal For DeleteComfirmation
+    var DeletePlayerRecord = function (playerNo) {
+        $("#plyID").val(playerNo);
+        $("#DeleteConfirmation").modal("show");
+    }
+    var ConfirmDelete = function () {
+        var plyID = $("#plyID").val();
+        $.ajax({
+            type: "POST",
+            url: "/Admin/DeletePlayer?playerNo=" + plyID,
+            success: function (result) {
+                $(".row_" + plyID).remove();
+                alert("Deleted successfully !!");
+                window.location.href = "/Admin/Registers";
+                $("#DeleteConfirmation").modal("hide");
+            }
+        })
+    }
+
+
+</script>

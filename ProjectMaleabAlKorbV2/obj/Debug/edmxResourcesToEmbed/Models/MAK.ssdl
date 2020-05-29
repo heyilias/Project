@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MalaebAlKorbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MalaebAlKorbModelStoreContainer">
+    <EntitySet Name="Contacts" EntityType="MalaebAlKorbModel.Store.Contacts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Players" EntityType="MalaebAlKorbModel.Store.Players" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Reservations" EntityType="MalaebAlKorbModel.Store.Reservations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Stadia" EntityType="MalaebAlKorbModel.Store.Stadia" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_PlayerReservation" Association="MalaebAlKorbModel.Store.FK_PlayerReservation">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StadiumReservation" Association="MalaebAlKorbModel.Store.FK_StadiumReservation">
+      <End Role="Stadium" EntitySet="Stadia" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Contacts">
+    <Key>
+      <PropertyRef Name="messageNo" />
+    </Key>
+    <Property Name="messageNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="emails" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="allMessage" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="dateMessage" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Players">
+    <Key>
+      <PropertyRef Name="playerNo" />
+    </Key>
+    <Property Name="playerNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="names" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="emails" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="passwords" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="phone" Type="varchar" Nullable="false" MaxLength="13" />
+    <Property Name="dateCreated" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Reservations">
+    <Key>
+      <PropertyRef Name="reservationNo" />
+    </Key>
+    <Property Name="reservationNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="reservationTime" Type="time" Nullable="false" Precision="7" />
+    <Property Name="reservationDate" Type="datetime" Nullable="false" />
+    <Property Name="dateReservation" Type="datetime" Nullable="true" />
+    <Property Name="playerNo" Type="int" Nullable="true" />
+    <Property Name="stadiumNo" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Stadia">
+    <Key>
+      <PropertyRef Name="stadiumNo" />
+    </Key>
+    <Property Name="stadiumNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="stadiumName" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="stadiumCity" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="stadiumCapacity" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PlayerReservation">
+    <End Role="Player" Type="MalaebAlKorbModel.Store.Players" Multiplicity="0..1" />
+    <End Role="Reservation" Type="MalaebAlKorbModel.Store.Reservations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="playerNo" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="playerNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StadiumReservation">
+    <End Role="Stadium" Type="MalaebAlKorbModel.Store.Stadia" Multiplicity="0..1" />
+    <End Role="Reservation" Type="MalaebAlKorbModel.Store.Reservations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stadium">
+        <PropertyRef Name="stadiumNo" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="stadiumNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

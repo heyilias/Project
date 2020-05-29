@@ -1,0 +1,179 @@
+﻿@model ProjectMaleabAlKorbV2.Models.Stadium
+
+@{
+    ViewBag.Title = "Staduim";
+    Layout = "~/Views/Shared/_AdminPage.cshtml";
+}
+
+<div class="col-md-12 content-top-2 card">
+
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            All Contact
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <a href="#" class="btn btn-info" onclick="AddNewRegisters(0)">Add New Stadium</a>
+                <br /><br />
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Stadium No</th>
+                            <th>Stadium Name</th>
+                            <th>City</th>
+                            <th>Capcity</th>
+                            <th>Action(Edit)</th>
+                            <th>Action(Delete)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="SetStadiumList">
+                        <tr id="LoadingStatus" style="color:red"></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    @*Create a PopUp Modal With Contact Form for Add & Edit Player Record*@
+    <div class="modal fade" id="myModalpop" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h4 id="ModalTitle"></h4>
+                </div>
+                <div class="modal-body">
+                    <form id="form">
+                        <fieldset id="submitForm">
+                            @Html.HiddenFor(s => s.stadiumNo, new { @id = "stdID" })
+                            <div class="form-group">
+                                @Html.TextBoxFor(s => s.stadiumName, new { @id = "stdName", @class = "form-control", @placeholder = "stadium Name" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(s => s.stadiumCity, new { @id = "stdCity", @class = "form-control", @placeholder = "City" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(s => s.stadiumCapacity, new { @id = "stdCapacity", @class = "form-control", @placeholder = "Capacity" })
+                            </div>
+                            <div class="form-group">
+                                <a class="btn btn-block btn-danger" id="saveContact">Save</a>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Create A PopUp Modal For DeleteConfirmation*@
+
+    <div class="modal fade" id="DeleteConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h4>Delete Contact</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="hs">Are You Sure? You Want To Delete This Stadium.</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-primary" data-dismiss="modal" id="r">Cancle</a>
+                    <a href="#" class="btn btn-danger" onclick="ConfirmDelete()">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<!--Contenu De la pge-->
+
+<script>
+    $('LoadingStatus').html('Loading....');
+    $.get('/Admin/GetStadiumList', null, DataBind);
+
+    function DataBind(StadiumList) {
+        var setData = $('#SetStadiumList');
+        for (var i = 0; i < StadiumList.length; i++) {
+            var Data = '<tr class="row_' + StadiumList[i].stadiumNo + '"><td>' +
+                StadiumList[i].stadiumNo + '</td><td>' +
+                StadiumList[i].stadiumName + '</td><td>' +
+                StadiumList[i].stadiumCity + '</td><td>' +
+                StadiumList[i].StadiumCapacity + '</td>' +
+                '<td><a href="#" class="btn btn-warning" style="text-align:center;" onclick="EditStadium(' + StadiumList[i].stadiumNo + ')"><span class="glyphicon glyphicon-edit"></span></a></td>' +
+                '<td><a href="#" class="btn btn-danger" onclick="DeleteStadium(' + StadiumList[i].stadiumNo + ')"><span class="glyphicon glyphicon-trash"></span></a></td>' +
+                '</tr>';
+            setData.append(Data);
+            $('LoadingStatus').html('Loading....');
+        }
+    }
+
+    //show the Popup for add new Player
+    function AddNewRegisters(messageNo) {
+        $('#form')[0].reset();
+        $('#stdID').val(0);
+        $('#ModalTitle').html("Add New Stadium");
+        $('#myModalpop').modal();
+    }
+
+    $('#saveContact').click(function () {
+        var data = $("#submitForm").serialize();
+        $.ajax({
+            type: "Post",
+            url: "/Admin/SaveDataInStadiumTable",
+            data: data,
+            success: function (result) {
+                alert("Success!..");
+                window.location.href = "/Admin/Stadium";
+                $("#myModalpop").modal("hide");
+
+            }
+        })
+    });
+
+
+    //show the Popup for Edit student
+    function EditStadium(stadiumNo) {
+        var url = "/Admin/GetStadiumById?stadiumNo=" + stadiumNo;
+        $('#ModalTitle').html("Update Stadium");
+        $('#myModalpop').modal();
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+                var obj = JSON.parse(data);
+                $('#stdID').val(obj.stadiumNo);
+                $('#stdName').val(obj.stadiumName);
+                $('#stdCity').val(obj.stadiumCity);
+                $('#stdCapacity').val(obj.StadiumCapacity);
+
+            }
+        })
+    }
+
+    //Show The Popup Modal For DeleteComfirmation
+    var DeleteStadium = function (stadiumNo) {
+        $("#stdID").val(stadiumNo);
+        $("#DeleteConfirmation").modal("show");
+    }
+    var ConfirmDelete = function () {
+        var stdID = $("#stdID").val();
+        $.ajax({
+            type: "POST",
+            url: "/Admin/DeleteStadium?stadiumNo=" + stdID,
+            success: function (result) {
+                $(".row_" + stdID).remove();
+                alert("Deleted successfully !!");
+                window.location.href = "/Admin/Stadium";
+                $("#DeleteConfirmation").modal("hide");
+            }
+        })
+    }
+
+
+
+</script>
+

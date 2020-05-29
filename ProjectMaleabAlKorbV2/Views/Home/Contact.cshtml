@@ -1,0 +1,99 @@
+﻿@model ProjectMaleabAlKorbV2.Models.Contact
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+<!-- /banner -->
+<div class="banner1">
+    <div class="wthree_banner1_info">
+        <h3><span>C</span>ontact Us</h3>
+    </div>
+</div>
+<!-- //banner -->
+<!-- mail -->
+<div class="team">
+    <div class="container">
+        <h3 class="Mk_header maak_agileits_header">Contact <span>Us</span></h3>
+        <p class="sub_para_agile">Add Some Short Description</p>
+        <div class="agile_team_grids_top">
+            <div class="col-md-6 agileinfo_mail_grid_left">
+                <form action="#" method="post" id="submitForm">
+                    @Html.HiddenFor(m => m.messageNo, new { @id = "msgNo" })
+                    <span class="input input--nariko">
+                        @Html.TextBoxFor(m => m.name, new { @id = "input-20", @class = "input__field input__field--nariko", @placeholder = "", @name = "Name", @type = "text", @required = "" })
+                        <label class="input__la input__label--nariko" for="input-20">
+                            <span class="input__label-content input__label-content--nariko">Your Name</span>
+                        </label>
+                    </span>
+                    <span class="input input--nariko">
+                        @Html.TextBoxFor(m => m.emails, new { @id = "input-21", @class = "input__field input__field--nariko", @placeholder = "", @name = "Email", @type = "email", @required = "" })
+                        <label class="input__label input__label--nariko" for="input-21">
+                            <span class="input__label-content input__label-content--nariko">Your Email</span>
+                        </label>
+                    </span>
+                    <span class="input input--nariko">
+                        <input class="input__field input__field--nariko" name="Subject" type="text" id="input-22"
+                               placeholder=" "  />
+                        <label class="input__label input__label--nariko" for="input-22">
+                            <span class="input__label-content input__label-content--nariko">Your Subject</span>
+                        </label>
+                    </span>
+                    @Html.TextAreaFor(m => m.allMessage, new { @placeholder = "Your Message...", @name = "Message", @required = "" })
+
+                    <input type="submit" value="Send" id="sendMsgs">
+                </form>
+            </div>
+            <div class="col-md-6 agileinfo_mail_grid_right">
+                <div class="agileinfo_mail_social_right">
+                    <div class="agileinfo_mail_social_rightl">
+                        <a href="https://www.facebook.com" target="_blank" class="maak_contact_facebook">
+                            <i class="fa fa-facebook" aria-hidden="true"></i>
+                            <p>Facebook</p>
+                        </a>
+                    </div>
+                    <div class="agileinfo_mail_social_rightr">
+                        <a href="https://www.Twitter.com" target="_blank" class="maak_contact_twitter">
+                            <i class="fa fa-twitter" aria-hidden="true"></i>
+                            <p>Twitter</p>
+                        </a>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="agileinfo_mail_social_right">
+                    <div class="agileinfo_mail_social_rightl">
+                        <a href="https://www.gmail.com" target="_blank" class="maak_contact_google">
+                            <i class="fa fa-google-plus" aria-hidden="true"></i>
+                            <p>Google+</p>
+                        </a>
+                    </div>
+                    <div class="agileinfo_mail_social_rightr">
+                        <a href="https://www.instagram.com" target="_blank" class="maak_contact_instagram">
+                            <i class="fa fa-instagram" aria-hidden="true"></i>
+                            <p>Instagram</p>
+                        </a>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+                <div class="agileinfo_mail_social_right">
+                    <div class="agileinfo_mail_social_right_social">
+                        <a href="https://www.rss.com" target="_blank" class="maak_contact_rss">
+                            <i class="fa fa-rss"></i>
+                            <p>RSS</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+<div class="agile_map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13589.73650651898!2d-8.055784630224624!3d31.62196199999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafe934d23cf64f%3A0x6d002ebf12a6a0ec!2sInstitut%20Sup%C3%A9rieur%20de%20Gestion%20et%20d&#39;Informatique!5e0!3m2!1sfr!2sma!4v1586519803140!5m2!1sfr!2sma"
+            style="border:0;">
+
+    </iframe>
+
+</div>
+<!-- //mail -->
+

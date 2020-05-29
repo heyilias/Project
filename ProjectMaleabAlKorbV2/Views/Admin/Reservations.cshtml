@@ -1,0 +1,206 @@
+﻿@using ProjectMaleabAlKorbV2.Models
+@model Reservation
+@{
+    ViewBag.Title = "Reservations";
+    Layout = "~/Views/Shared/_AdminPage.cshtml";
+}
+
+<!--Contenu De la pge-->
+<div class="col-md-12 content-top-2 card">
+
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            All Reservations
+        </div>
+        <div class="panel-body">
+            <div class="table-responsive">
+                <a href="#" class="btn btn-info" onclick="AddNewReservation(0)">Add New Reservation</a>
+                <br /><br />
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Reservation No</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Time</th>
+                            <th>Date</th>
+                            <th>Phone</th>
+                            <th>Num Player</th>
+                            <th>Location</th>
+                            <th>Createddate</th>
+                            <th>Action(Edit)</th>
+                            <th>Action(Delete)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="SetRegisterList">
+                        <tr id="LoadingStatus" style="color:red"></tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+    @*Create a PopUp Modal With Registration Form for Add & Edit Player Record*@
+    <div class="modal fade" id="myModalpop" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h4 id="ModalTitle"></h4>
+                </div>
+                <div class="modal-body">
+                    <form id="form">
+                        <fieldset id="submitForm">
+                            @Html.HiddenFor(r => r.reservationNo, new { @id = "resID" })
+                            <div class="form-group">
+                                @Html.TextBoxFor(r => r.FullName, new { @id = "resName", @class = "form-control", @placeholder = "Full Name" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(r => r.Email, new { @id = "resEmail", @class = "form-control", @placeholder = "Email" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(r => r.reservationTime, new { @id = "resTime", @class = "form-control", @placeholder = "choose Time" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(r => r.reservationDate, new { @id = "resDate", @class = "form-control", @placeholder = "Choose Day" })
+                            </div>
+                            <div class="form-group">
+                                @Html.TextBoxFor(r => r.Phone, new { @id = "resPhone", @class = "form-control", @placeholder = "Phone Number" })
+                            </div>
+                            <div class="form-group">
+                                @Html.DropDownListFor(r => r.nbrPlayer,new SelectList(Enum.GetValues(typeof(location))) , new { @id = "resNbrPlayer", @class = "form-control", @placeholder = "Number of Player" })
+                            </div>
+                            <div class="form-group">
+                                @Html.DropDownListFor(r => r.Location, new List<SelectListItem>
+                               {
+                                  new SelectListItem{Text = "7", Value= "7", Selected=true },
+                                  new SelectListItem{Text = "8", Value= "8" },
+                                  new SelectListItem{Text = "9", Value= "9" },
+                                  new SelectListItem{Text = "10", Value= "10" },
+                                  new SelectListItem{Text = "11", Value= "11" }
+                               }, new { @id = "resLocation", @class = "form-control", @placeholder = "Location" })
+                            </div>
+                            <div class="form-group">
+                                <a class="btn btn-block btn-danger" id="saveRes">Save</a>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Create A PopUp Modal For DeleteConfirmation*@
+
+    <div class="modal fade" id="DeleteConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a href="#" class="close" data-dismiss="modal">&times;</a>
+                    <h4>Delete Player</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="hs">Are You Sure? You Want To Delete This Reservation.</h4>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-primary" data-dismiss="modal" id="r">Cancle</a>
+                    <a href="#" class="btn btn-danger" onclick="ConfirmDelete()">Confirm</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    $('LoadingStatus').html('Loading....');
+    $.get('/Admin/GetReservationList', null, DataBind);
+
+    function DataBind(ReservationList) {
+        var setData = $('#SetRegisterList');
+        for (var i = 0; i < ReservationList.length; i++) {
+            var Data = '<tr class="row_' + ReservationList[i].reservationNo + '"><td>' +
+                ReservationList[i].reservationNo + '</td><td>' +
+                ReservationList[i].FullName + '</td><td>' +
+                ReservationList[i].Email + '</td><td>' +
+                ReservationList[i].reservationTime + '</td><td>' +
+                ReservationList[i].reservationDate + '</td><td>' +
+                ReservationList[i].Phone + '</td><td>' +
+                ReservationList[i].nbrPlayer + '</td><td>' +
+                ReservationList[i].Location + '</td><td>' +
+                ReservationList[i].dateReservation + '</td>' +
+                '<td><a href="#" class="btn btn-warning" style="text-align:center;" onclick="EditResRecord(' + ReservationList[i].reservationNo + ')"><span class="glyphicon glyphicon-edit"></span></a></td>' +
+                '<td><a href="#" class="btn btn-danger" onclick="DeleteResRecord(' + ReservationList[i].reservationNo + ')"><span class="glyphicon glyphicon-trash"></span></a></td>' +
+                '</tr>';
+            setData.append(Data);
+        }
+    }
+
+    //show the Popup for add new Player
+    function AddNewReservation(resNo) {
+        $('#form')[0].reset();
+        $('#resID').val(0);
+        $('#ModalTitle').html("Add New Reservation");
+        $('#myModalpop').modal();
+    }
+
+    $('#saveRes').click(function () {
+        var data = $("#submitForm").serialize();
+        $.ajax({
+            type: "Post",
+            url: "/Admin/SaveDataInDatabaseReservation",
+            data: data,
+            success: function (result) {
+                alert("Success!..");
+                window.location.href = "/Admin/Reservations";
+                $("#myModalpop").modal("hide");
+
+            }
+        })
+    });
+
+    //show the Popup for Edit student
+    function EditResRecord(resNo) {
+        var url = "/Admin/GetResById?reservationNo=" + resNo;
+        $('#ModalTitle').html("Update Reservation Record");
+        $('#myModalpop').modal();
+        $.ajax({
+            type: "GET",
+            url: url,
+            success: function (data) {
+                var obj = JSON.parse(data);
+                $('#resID').val(obj.reservationNo);
+                $('#resName').val(obj.FullName);
+                $('#resEmail').val(obj.Email);
+                $('#resTime').val(obj.reservationTime);
+                $('#resDate').val(obj.reservationDate);
+                $('#resPhone').val(obj.Phone);
+                
+            }
+        })
+    }
+
+    //Show The Popup Modal For DeleteComfirmation
+    var DeleteResRecord = function (resNo) {
+        $("#resID").val(resNo);
+        $("#DeleteConfirmation").modal("show");
+    }
+    var ConfirmDelete = function () {
+        var resID = $("#resID").val();
+        $.ajax({
+            type: "POST",
+            url: "/Admin/DeleteRes?reservationNo=" + resID,
+            success: function (result) {
+                $(".row_" + resID).remove();
+                alert("Deleted successfully !!");
+                window.location.href = "/Admin/Reservations";
+                $("#DeleteConfirmation").modal("hide");
+            }
+        })
+    }
+
+
+</script>

@@ -1,0 +1,134 @@
+﻿@using ProjectMaleabAlKorbV2.Models
+@model Reservation
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_PublicPage.cshtml";
+}
+
+
+
+@section Style_Reservation{
+    <!-- Stylesheet -->
+    <link href="~/reservation_form/css/wickedpicker.css" rel="stylesheet" />
+
+    <link href="~/reservation_form/css/jquery-ui.css" rel="stylesheet" />
+
+
+    <link href="~/reservation_form/css/style.css" rel="stylesheet" />
+    <!-- //Stylesheet -->
+    <!--fonts-->
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Montserrat+Alternates:200,400,500,600,700" rel="stylesheet">
+    <!--//fonts-->
+}
+
+
+<!--Body-->
+<!--background-->
+<br />
+<h1> <span>O</span>nline <span>F</span>oot <span>B</span>ooking <span>F</span>orm </h1>
+
+<h3 class="text-center" style="color: #4caf50;">Maleab Al Korb</h3>
+
+<br />
+<div class="bg-agile">
+    <div class="left-agileits-w3layouts-img">
+        <h3>What we provide you</h3>
+        <ul>
+            <li><span>.</span>24x7 Foot service are available</li>
+            <li><span>.</span>Online booking facility</li>
+            <li><span>.</span>App Comming....  </li>
+
+        </ul>
+        <p>- Maleab Al Korb Teams.</p>
+    </div>
+    <div class="book-appointment">
+        <h2>Personal Details</h2>
+        <div class="book-agileinfo-form">
+            <form action="#" method="post">
+                <div class="main-agile-sectns">
+                    <div class="agileits-btm-spc form-text1">
+                        @Html.TextBoxFor(r => r.FullName, new { @id = "resName", @class = "form-control", @placeholder = "Full Name", @required = "" })
+                        <!--input type="text" name="Name" placeholder="" required=""-->
+                    </div>
+                    <div class="agileits-btm-spc form-text2">
+                        @Html.TextBoxFor(r => r.Phone, new { @id = "resphone", @class = "form-control", @placeholder = "Phone", @required = "" })
+                        <!--input type="text" name="Phone no" placeholder="Phone number" required=""-->
+                    </div>
+                </div>
+                <div class="agileits-btm-spc form-text">
+                    <input type="email" name="email" placeholder="Email" required="" value="@Session["emails"]" >
+                </div>
+                <div class="clear"></div>
+                <h2 class="sub-head-w3ls">Booking Details</h2>
+                <div class="main-agile-sectns">
+                    <div class="agileits-btm-spc form-text1">
+                        @Html.TextBoxFor(r => r.reservationDate, new { @id = "dateRes", @class = "form-control", @placeholder = "Choose Date to Play", @required = "" })
+
+                        <!--input id="datepicker" name="Text" type="text" placeholder="Pick-up Date" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}"
+                               required=""-->
+                    </div>
+                    <div class="agileits-btm-spc form-text1">
+                        @Html.DropDownListFor(r => r.Location, new SelectList(Enum.GetValues(typeof(location)))
+                        , "Seleted City" ,
+                        new { @style= "color: #fff; background: rgba(255, 255, 255, 0); border: none;border-bottom: 1px solid rgba(255, 255, 255, 0.27);box-sizing: border-box;font-family: 'Roboto', sans-serif;letter-spacing: 1.5px; padding: 10px 10px;outline: none;", @id = "locations", @class = "form-control frm-field form-text", @required = "" })
+
+                        <!--input type="text" name="Pick-up Location" placeholder="Pick-up Location" required=""-->
+                    </div>
+
+                </div>
+                <div class="main-agile-sectns agileits-btm-spc form-text2">
+                    @Html.TextBoxFor(r => r.reservationTime, new { @id = "resName", @class = "form-control", @placeholder = "time", @required = "" })
+                    @*<input type="text" id="timepicker" name="Time" class="timepicker form-control" placeholder="Pick-up Time" value="">*@
+
+
+                </div>
+
+                <div class="main-agile-sectns">
+                    @Html.DropDownListFor(r => r.nbrPlayer, new List<SelectListItem>
+                       {
+                          new SelectListItem{Text = "7", Value= "7" },
+                          new SelectListItem{Text = "8", Value= "8" },
+                          new SelectListItem{Text = "9", Value= "9" },
+                          new SelectListItem{Text = "10", Value= "10" },
+                          new SelectListItem{Text = "11", Value= "11" }
+                       }, "Number of Players", new { @id ="country" ,@class = "form-control frm-field form-text", @required ="" })
+                    @*@Html.TextBoxFor(r => r.nbrPlayer, new { @id = "resName", @class = "frm-field form-text required", @placeholder = "nbr player", @required = "" })*@
+                    @*<select id="country" onchange="change_country(this.value)" class="frm-field form-text required">
+            <option selected="true" disabled="disabled">~~Nombre Player~~</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+        </select>*@
+
+                </div>
+
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+                <div class="clear"></div>
+            </form>
+        </div>
+
+    </div>
+</div>
+<br />
+
+<script type="text/javascript" src="~/reservation_form/js/jquery-2.2.3.min.js"></script>
+<!-- Time -->
+<script type="text/javascript" src="~/reservation_form/js/wickedpicker.js"></script>
+<script type="text/javascript">
+    $('.timepicker').wickedpicker({
+        twentyFour: false
+    });
+</script>
+<!--// Time -->
+<!-- Calendar -->
+<script src="~/reservation_form/js/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#datepicker,#datepicker1,#datepicker2,#datepicker3").datepicker({ minDate: new Date() });
+    });
+</script>
+<!-- //Calendar -->

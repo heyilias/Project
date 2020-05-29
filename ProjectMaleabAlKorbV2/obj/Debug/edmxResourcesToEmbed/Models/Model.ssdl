@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MalaebAlKorbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admins">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Emails" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Passwords" Type="nvarchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="messageNo" />
+    </Key>
+    <Property Name="messageNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="emails" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="allMessage" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="dateMessage" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="playerNo" />
+    </Key>
+    <Property Name="playerNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="names" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="emails" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="passwords" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="phone" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="dateCreated" Type="datetime" />
+  </EntityType>
+  <EntityType Name="playerDeleteData">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="allData" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="playerUpdateData">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="allData" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="reservationNo" />
+    </Key>
+    <Property Name="reservationNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="reservationTime" Type="time" Precision="7" Nullable="false" />
+    <Property Name="reservationDate" Type="date" Nullable="false" />
+    <Property Name="dateReservation" Type="datetime" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+    <Property Name="Email" Type="nvarchar" MaxLength="70" />
+    <Property Name="nbrPlayer" Type="int" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Stadium">
+    <Key>
+      <PropertyRef Name="stadiumNo" />
+    </Key>
+    <Property Name="stadiumNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="stadiumName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="stadiumCity" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="stadiumCapacity" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="stadiumDeleteData">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="allData" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="stadiumUpdateData">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="allData" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityContainer Name="MalaebAlKorbModelStoreContainer">
+    <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Player" EntityType="Self.Player" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="playerDeleteData" EntityType="Self.playerDeleteData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="playerUpdateData" EntityType="Self.playerUpdateData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stadium" EntityType="Self.Stadium" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stadiumDeleteData" EntityType="Self.stadiumDeleteData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="stadiumUpdateData" EntityType="Self.stadiumUpdateData" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,55 @@
+﻿#loginbox {
+    /*margin-left: 50%;*/
+    position: absolute;
+    top: 258px;
+    left: 103px;
+    padding-bottom: 100%;
+    z-index: 999;
+}
+
+.panel-title {
+    text-align: center;
+    font-size: 22px;
+}
+
+@media screen and (max-width: 992px)and (min-width: 768px) {
+    #loginbox {
+        position: absolute;
+        top: 350px;
+        z-index: 999;
+        left: -60px;
+    }
+
+    .panel-title {
+        text-align: center;
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 768px)and (min-width: 766px) {
+    #loginbox {
+        position: absolute;
+        top: 267px;
+        z-index: 999;
+        left: 124px;
+        width: 300px;
+    }
+
+    .panel-title {
+        text-align: center;
+        font-size: 22px;
+    }
+}
+
+@media screen and (max-width: 765px) {
+    #loginbox {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+
+    .panel-title {
+        text-align: center;
+        font-size: 22px;
+    }
+}

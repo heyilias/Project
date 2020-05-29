@@ -1,0 +1,14 @@
+﻿
+
+@if (Session["emails"] != null) {
+<div class="col-sm-12 controls">
+    <a id="btn-login" href="@Url.Action("Index","Reservation")" class="btn btn-success btn-block">Find Place  </a>
+</div>
+}
+else {
+<div class="col-sm-12 controls">
+    <a id="btn-login" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal2">Find Place  </a>
+</div>
+}
+
+

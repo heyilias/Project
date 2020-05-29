@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MalaebAlKorbModelStoreContainer" CdmEntityContainer="MalaebAlKorbEntities">
+    <EntitySetMapping Name="Contacts">
+      <EntityTypeMapping TypeName="MalaebAlKorbModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="messageNo" ColumnName="messageNo" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="emails" ColumnName="emails" />
+          <ScalarProperty Name="allMessage" ColumnName="allMessage" />
+          <ScalarProperty Name="dateMessage" ColumnName="dateMessage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Players">
+      <EntityTypeMapping TypeName="MalaebAlKorbModel.Player">
+        <MappingFragment StoreEntitySet="Player">
+          <ScalarProperty Name="playerNo" ColumnName="playerNo" />
+          <ScalarProperty Name="names" ColumnName="names" />
+          <ScalarProperty Name="emails" ColumnName="emails" />
+          <ScalarProperty Name="passwords" ColumnName="passwords" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="playerDeleteDatas">
+      <EntityTypeMapping TypeName="MalaebAlKorbModel.playerDeleteData">
+        <MappingFragment StoreEntitySet="playerDeleteData">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="allData" ColumnName="allData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="playerUpdateDatas">
+      <EntityTypeMapping TypeName="MalaebAlKorbModel.playerUpdateData">
+        <MappingFragment StoreEntitySet="playerUpdateData">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="allData" ColumnName="allData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="MalaebAlKorbModel.Reservation">
+        <MappingFragment StoreEntitySet="Reservation">
+          <ScalarProperty Name="reservationNo" ColumnName="reservationNo" />
+          <ScalarProperty Name="reservationTime" ColumnName="reservationTime" />
+          <ScalarProperty Name="reservationDate" ColumnName="reservationDate" />
+          <ScalarProperty Name="dateReservation" ColumnName="dateReservation" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="nbrPlayer" ColumnName="nbrPlayer" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stadia">
+      <EntityTypeMapping TypeName="MalaebAlKorbModel.Stadium">
+        <MappingFragment StoreEntitySet="Stadium">
+          <ScalarProperty Name="stadiumNo" ColumnName="stadiumNo" />
+          <ScalarProperty Name="stadiumName" ColumnName="stadiumName" />
+          <ScalarProperty Name="stadiumCity" ColumnName="stadiumCity" />
+          <ScalarProperty Name="stadiumCapacity" ColumnName="stadiumCapacity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stadiumDeleteDatas">
+      <EntityTypeMapping TypeName="MalaebAlKorbModel.stadiumDeleteData">
+        <MappingFragment StoreEntitySet="stadiumDeleteData">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="allData" ColumnName="allData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="stadiumUpdateDatas">
+      <EntityTypeMapping TypeName="MalaebAlKorbModel.stadiumUpdateData">
+        <MappingFragment StoreEntitySet="stadiumUpdateData">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="allData" ColumnName="allData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Admins">
+      <EntityTypeMapping TypeName="MalaebAlKorbModel.Admin">
+        <MappingFragment StoreEntitySet="Admins">
+          <ScalarProperty Name="Passwords" ColumnName="Passwords" />
+          <ScalarProperty Name="Emails" ColumnName="Emails" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

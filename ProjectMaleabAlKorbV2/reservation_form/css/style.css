@@ -1,0 +1,943 @@
+
+
+
+/*--reset--*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+dl,
+dt,
+dd,
+ol,
+nav ul,
+nav li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+ol,
+ul {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+
+/*--start editing from here--*/
+
+a {
+    text-decoration: none;
+}
+
+.txt-rt {
+    text-align: right;
+}
+
+
+/* text align right */
+
+.txt-lt {
+    text-align: left;
+}
+
+
+/* text align left */
+
+.txt-center {
+    text-align: center;
+}
+
+
+/* text align center */
+
+.float-rt {
+    float: right;
+}
+
+
+/* float right */
+
+.float-lt {
+    float: left;
+}
+
+
+/* float left */
+
+.clear {
+    clear: both;
+}
+
+
+/* clear float */
+
+.pos-relative {
+    position: relative;
+}
+
+
+/* Position Relative */
+
+.pos-absolute {
+    position: absolute;
+}
+
+
+/* Position Absolute */
+
+.vertical-base {
+    vertical-align: baseline;
+}
+
+
+/* vertical align baseline */
+
+.vertical-top {
+    vertical-align: top;
+}
+
+
+/* vertical align top */
+
+nav.vertical ul li {
+    display: block;
+}
+
+
+/* vertical menu */
+
+nav.horizontal ul li {
+    display: inline-block;
+}
+
+
+/* horizontal menu */
+
+img {
+    max-width: 100%;
+}
+
+
+/*--end reset--*/
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 100%;
+    background: url(../images/banner.jpg)no-repeat center top;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-attachment: fixed;
+}
+
+.bg-agile {
+    width: 65%;
+    margin: 0 auto;
+}
+
+.left-agileits-w3layouts-img {
+    box-sizing: border-box;
+    padding: 8em 2em 0;
+    background: url(../images/left-img.jpg)no-repeat center top;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.left-agileits-w3layouts-img h3 {
+    color: #4CAF50;
+    text-shadow: 1px 1px 7px #0e0e0e;
+    font-weight: 600;
+    font-size: 1.8em;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+}
+
+.left-agileits-w3layouts-img ul li {
+    display: block;
+    list-style: none;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+    margin-top: 22px;
+}
+
+.left-agileits-w3layouts-img ul li span {
+    color:#4CAF50;
+    font-size: 30px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.left-agileits-w3layouts-img p {
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-align: right;
+    margin-top: 7em;
+    font-style: italic;
+}
+
+.book-appointment {
+    box-sizing: border-box;
+    padding: 2em 2em;
+    background: rgba(0, 0, 0, 0.78);
+}
+
+.bg-agile img {
+    position: absolute;
+    right: 0;
+    bottom: 0em;
+    width: 23em;
+}
+
+h1 {
+    font-size: 60px;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: #fff;
+    text-shadow: 1px 1px 7px #6b6b6b;
+    letter-spacing: 5px;
+    margin: 2.4em 0 1em;
+    text-align: center;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+h1 span {
+    color: #3ab757;
+}
+
+.book-appointment h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    text-transform: capitalize;
+    margin-bottom: .4em;
+    font-weight: 400;
+    letter-spacing: 3px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.wthree-text {
+    text-align: center;
+}
+
+.wthree-text h6 {
+    margin-top: 10px;
+    color: #4CAF50;
+    font-size: 19px;
+    text-transform: capitalize;
+    margin-bottom: .7em;
+    font-weight: 400;
+    letter-spacing: 2px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.radio-w3ls li input[type="radio"] {
+    cursor: pointer;
+}
+
+.radio-w3ls li label {
+    color: #fff;
+    font-size: 13.5px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+
+/*-- form --*/
+
+.book-agileinfo-form input[type="text"],
+.book-agileinfo-form input[type="email"],
+select#country,
+select#country1,
+input#datepicker {
+    width: 100%;
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1.5px;
+    padding: 10px 10px;
+    outline: none;
+    background: rgba(255, 255, 255, 0);
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.27);
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+.agileits-btm-spc {
+    margin-bottom: 1em;
+}
+
+.form-text {
+    width: 100%;
+}
+
+select#country option,
+select#locations option,
+select#country1 option {
+    background: #000;
+}
+
+.book-agileinfo-form input[type="submit"],
+.book-agileinfo-form input[type="reset"] {
+    text-transform: capitalize;
+    background: #4CAF50;
+    color: #000000;
+    padding: 0.7em 0em;
+    border: none;
+    border: 2px solid #4CAF50;
+    font-weight: 600;
+    font-size: 1em;
+    margin-top: 1em;
+    width: 49%;
+    outline: none;
+    letter-spacing: 1px;
+    -webkit-transition: .5s all;
+    -moz-transition: .5s all;
+    transition: .5s all;
+    cursor: pointer;
+}
+
+.book-agileinfo-form input[type="submit"] {
+    float: left;
+}
+
+.book-agileinfo-form input[type="reset"] {
+    float: right;
+}
+
+.book-agileinfo-form input[type="submit"]:hover,
+.book-agileinfo-form input[type="reset"]:hover {
+    background: transparent;
+    color: #fff;
+}
+
+.book-agileinfo-form ::-webkit-input-placeholder {
+    color: #a0a0a0;
+}
+
+.book-agileinfo-form :-moz-placeholder {
+    /* Firefox 18- */
+    color: #a0a0a0;
+}
+
+.book-agileinfo-form ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #a0a0a0;
+}
+
+.book-agileinfo-form :-ms-input-placeholder {
+    color: #a0a0a0;
+}
+
+p.wickedpicker__title {
+    font-family: 'Roboto', sans-serif;
+    background: #4CAF50;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.wickedpicker__close {
+    color: #fefefe;
+    margin-top: 5px;
+}
+
+
+/*-- checkbox --*/
+
+.book-agileinfo-form label {
+    font-size: 13.5px;
+    color: rgba(255, 255, 255, 0.83);
+    letter-spacing: 2px;
+    font-weight: 400;
+    position: relative;
+    margin-bottom: 5px;
+    display: inline-block;
+    text-transform: capitalize;
+}
+
+ul.radio-w3ls li {
+    display: inline-block;
+    margin: 0em 1em;
+}
+
+
+/*-- //checkbox --*/
+
+
+/*--// form --*/
+
+
+/*--copyright--*/
+
+.copy-w3layouts {
+    margin: 5em 0em;
+    text-align: center;
+}
+
+.copy-w3layouts p {
+    color: #fff;
+    font-size: 15px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.copy-w3layouts p a {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.copy-w3layouts p a:hover {
+    color: #4CAF50;
+}
+
+
+/*--//copyright--*/
+
+
+/*--responsive--*/
+
+@media(max-width:1680px) {
+    h1 {
+        font-size: 57px;
+        margin: 2em 0 .8em;
+    }
+}
+
+@media(max-width:1600px) {
+    h1 {
+        font-size: 54px;
+        margin: .9em 0 0.5em;
+    }
+    .copy-w3layouts {
+        margin: 1.7em 0em;
+    }
+}
+
+@media(max-width:1440px) {
+    .bg-agile {
+        width: 70%;
+    }
+    h1 {
+        margin: 1.5em 0 0.6em;
+    }
+    .copy-w3layouts {
+        margin: 2.7em 0em;
+    }
+}
+
+@media(max-width:1366px) {
+    h1 {
+        font-size: 52px;
+        margin: .8em 0 0.4em;
+    }
+    .left-agileits-w3layouts-img h3 {
+        font-size: 1.7em;
+    }
+    .bg-agile {
+        width: 72%;
+    }
+    .copy-w3layouts {
+        margin: 1.5em 0em;
+    }
+    .book-appointment h2 {
+        font-size: 27px;
+        letter-spacing: 2px;
+    }
+}
+
+@media(max-width:1280px) {
+    .bg-agile {
+        width: 80%;
+    }
+    .copy-w3layouts {
+        margin: 2.2em 0em;
+    }
+    .ui-datepicker,
+    .wickedpicker {
+        width: 20.7%;
+    }
+}
+
+@media(max-width:1080px) {
+    .bg-agile {
+        width: 90%;
+    }
+    .ui-datepicker,
+    .wickedpicker {
+        width: 23%;
+    }
+}
+
+@media(max-width:1050px) {
+    .left-agileits-w3layouts-img {
+        padding: 8em 1.7em 0;
+    }
+}
+
+@media(max-width:1024px) {
+    .bg-agile {
+        width: 91%;
+    }
+    .left-agileits-w3layouts-img ul li {
+        font-size: 15px;
+        letter-spacing: 0.9px;
+        margin-top: 10px;
+    }
+    .book-agileinfo-form input[type="text"],
+    .book-agileinfo-form input[type="email"],
+    select#country,
+    select#country1,
+    input#datepicker {
+        font-size: 15px;
+        letter-spacing: 1px;
+    }
+    h1 {
+        font-size: 47px;
+        letter-spacing: 4px;
+        margin: .6em 0 0.2em;
+    }
+    .book-appointment h2 {
+        font-size: 24px;
+    }
+    .agileits-btm-spc {
+        margin-bottom: 0.6em;
+    }
+    .book-agileinfo-form input[type="submit"],
+    .book-agileinfo-form input[type="reset"] {
+        padding: 0.6em 0em;
+    }
+    .copy-w3layouts {
+        margin: 1.5em 0em;
+    }
+    .ui-datepicker,
+    .wickedpicker {
+        width: 23.2%;
+    }
+}
+
+@media(min-width:992px) {
+    .bg-agile {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+    }
+    .left-agileits-w3layouts-img {
+        flex-basis: 40%;
+        -webkit-flex-basis: 40%;
+    }
+    .book-appointment {
+        flex-basis: 60%;
+        -webkit-flex-basis: 60%;
+    }
+}
+
+@media(max-width:991px) {
+    .bg-agile {
+        width: 75%;
+    }
+    .left-agileits-w3layouts-img {
+        padding: 3em 4em;
+        background: url(../images/left-img.jpg)no-repeat center;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+    }
+    .left-agileits-w3layouts-img p {
+        margin-top: 4em;
+    }
+    .ui-datepicker,
+    .wickedpicker {
+        width: 31.2%;
+    }
+    h1 {
+        margin: .8em 0 0.4em;
+    }
+    .copy-w3layouts p {
+        letter-spacing: 1.5px;
+        word-spacing: 0px;
+    }
+    .copy-w3layouts {
+        margin: 1.8em 0em;
+    }
+    .book-appointment {
+        padding: 2.5em 3em;
+    }
+}
+
+@media(max-width:900px) {
+    .ui-datepicker,
+    .wickedpicker {
+        width: 30.7%;
+    }
+}
+
+@media(max-width:800px) {
+    .left-agileits-w3layouts-img p {
+        margin-top: 2em;
+    }
+    .left-agileits-w3layouts-img ul li {
+        font-size: 14px;
+        margin-top: 3px;
+    }
+    h1 {
+        font-size: 45px;
+        letter-spacing: 3px;
+    }
+    .left-agileits-w3layouts-img {
+        padding: 2em 3em;
+    }
+    .left-agileits-w3layouts-img h3 {
+        font-size: 1.6em;
+    }
+    .ui-datepicker,
+    .wickedpicker {
+        width: 30%;
+    }
+}
+
+@media(max-width:768px) {
+    h1 {
+        margin: .6em 0 0.4em;
+    }
+    .book-appointment {
+        padding: 2em 2.5em;
+    }
+    .ui-datepicker,
+    .wickedpicker {
+        width: 31%;
+    }
+}
+
+@media(max-width:767px) {
+    h1 {
+        margin: .8em 0 0.5em;
+    }
+    .bg-agile {
+        width: 85%;
+    }
+    .ui-datepicker,
+    .wickedpicker {
+        width: 35.7%;
+    }
+}
+
+@media(max-width:736px) {
+    h1 {
+        font-size: 44px;
+        letter-spacing: 2px;
+    }
+    .ui-datepicker,
+    .wickedpicker {
+        width: 35.5%;
+    }
+}
+
+@media(max-width:667px) {
+    h1 {
+        font-size: 45px;
+        letter-spacing: 3px;
+        line-height: 1.2em;
+        margin: .7em 1em 0.4em;
+    }
+    .ui-datepicker,
+    .wickedpicker {
+        width: 34.7%;
+    }
+    .wickedpicker__close {
+        margin-top: 2px;
+    }
+    .copy-w3layouts {
+        margin: 1.5em 0em;
+    }
+    .copy-w3layouts p {
+        padding: 0 4em;
+        line-height: 30px;
+    }
+}
+
+@media(max-width:640px) {
+    h1 {
+        margin: .7em 0em 0.4em;
+    }
+}
+
+@media(max-width:600px) {
+    h1 {
+        font-size: 43px;
+        letter-spacing: 2px;
+    }
+    .book-appointment {
+        padding: 1.8em;
+    }
+    .left-agileits-w3layouts-img {
+        padding: 2em 2em;
+    }
+    .wthree-text h6 {
+        font-size: 18px;
+    }
+    .ui-datepicker,
+    .wickedpicker {
+        width: 36%;
+    }
+    .book-appointment h2 {
+        font-size: 23px;
+    }
+}
+
+@media(max-width:568px) {
+    .copy-w3layouts p {
+        padding: 0 2em;
+    }
+    h1 {
+        margin: .5em 0em 0.4em;
+    }
+    .left-agileits-w3layouts-img h3 {
+        font-size: 1.5em;
+        letter-spacing: 1px;
+    }
+}
+
+@media(min-width:481px) {
+    .main-agile-sectns {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+    }
+    .form-text1,
+    .form-text2 {
+        flex-basis: 48%;
+        -webkit-flex-basis: 48%;
+    }
+}
+
+@media(max-width:480px) {
+    h2.sub-head-w3ls {
+        margin-top: 1em;
+    }
+    ul.radio-w3ls li {
+        margin: 0em 0.5em;
+    }
+    .book-agileinfo-form input[type="submit"],
+    .book-agileinfo-form input[type="reset"] {
+        float: none;
+        width: 100%;
+        font-size: .95em;
+        margin-top: 0.5em;
+        padding: 0.5em 0em;
+    }
+    .wthree-text {
+        margin: 1.3em 0 .7em;
+    }
+    .ui-datepicker,
+    .wickedpicker {
+        width: 72%;
+    }
+}
+
+@media(max-width:440px) {
+    .ui-datepicker,
+    .wickedpicker {
+        width: 71%;
+    }
+}
+
+@media(max-width:414px) {
+    .bg-agile {
+        width: 90%;
+    }
+    .ui-datepicker,
+    .wickedpicker {
+        width: 75.5%;
+    }
+}
+
+@media(max-width:384px) {
+    h1 {
+        font-size: 39px;
+    }
+    .left-agileits-w3layouts-img h3 {
+        font-size: 1.4em;
+    }
+    .left-agileits-w3layouts-img ul li {
+        font-size: 13.5px;
+        margin-top: 5px;
+        line-height: 25px;
+    }
+    .left-agileits-w3layouts-img p {
+        margin-top: 1.5em;
+        font-size: 13px;
+    }
+    .ui-datepicker,
+    .wickedpicker {
+        width: 74.3%;
+    }
+    ul.radio-w3ls li {
+        display: block;
+        text-align: left;
+        margin: 0em 0em;
+    }
+    .copy-w3layouts p {
+        letter-spacing: 1px;
+        font-size: 14px;
+    }
+}
+
+@media(max-width:375px) {
+    .ui-datepicker,
+    .wickedpicker {
+        width: 73.5%;
+    }
+}
+
+@media(max-width:320px) {
+    h1 {
+        font-size: 37px;
+        letter-spacing: 0px;
+    }
+    .left-agileits-w3layouts-img {
+        padding: 1.2em;
+    }
+    .book-appointment {
+        padding: 1.2em;
+    }
+    .book-appointment h2 {
+        font-size: 20px;
+        letter-spacing: 1.5px;
+    }
+    .ui-datepicker,
+    .wickedpicker {
+        width: 77.5%;
+    }
+    .wthree-text h6 {
+        font-size: 17px;
+        letter-spacing: 1.5px;
+    }
+    .copy-w3layouts p {
+        padding: 0 1em;
+        line-height: 29px;
+    }
+    .copy-w3layouts {
+        margin: 1.3em 0em;
+    }
+}
+
+
+/*--//responsive--*/

@@ -1,0 +1,89 @@
+﻿
+<!--Body-->
+<!--background-->
+<h1> <span>O</span>nline <span>F</span>oot <span>B</span>ooking <span>F</span>orm </h1>
+
+<h3 class="text-center" style="color: #4caf50;">Maleab Al Korb</h3>
+<div class="bg-agile">
+    <div class="left-agileits-w3layouts-img">
+        <h3>What we provide you</h3>
+        <ul>
+            <li><span>.</span>24x7 Foot service are available</li>
+            <li><span>.</span>Online booking facility</li>
+            <li><span>.</span>App Comming....  </li>
+
+        </ul>
+        <p>- Maleab Al Korb Teams.</p>
+    </div>
+    <div class="book-appointment">
+        <h2>Personal Details</h2>
+        <div class="book-agileinfo-form">
+            <form action="#" method="post">
+                <div class="main-agile-sectns">
+                    <div class="agileits-btm-spc form-text1">
+                        <input type="text" name="Name" placeholder="Full Name" required="">
+                    </div>
+                    <div class="agileits-btm-spc form-text2">
+                        <input type="text" name="Phone no" placeholder="Phone number" required="">
+                    </div>
+                </div>
+                <div class="agileits-btm-spc form-text">
+                    <input type="email" name="email" placeholder="Email" required="">
+                </div>
+                <div class="clear"></div>
+                <h2 class="sub-head-w3ls">Booking Details</h2>
+                <div class="main-agile-sectns">
+                    <div class="agileits-btm-spc form-text1">
+                        <input id="datepicker" name="Text" type="text" placeholder="Pick-up Date" value="" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'mm/dd/yyyy';}"
+                               required="">
+                    </div>
+                    <div class="agileits-btm-spc form-text1">
+                        <input type="text" name="Pick-up Location" placeholder="Pick-up Location" required="">
+                    </div>
+
+                </div>
+                <div class="main-agile-sectns agileits-btm-spc form-text2">
+
+                    <input type="text" id="timepicker" name="Time" class="timepicker form-control" placeholder="Pick-up Time" value="">
+
+
+                </div>
+
+                <div class="main-agile-sectns">
+                    <select id="country" onchange="change_country(this.value)" class="frm-field form-text required">
+                        <option selected="true" disabled="disabled">~~Nombre Player~~</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                    </select>
+
+                </div>
+
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
+                <div class="clear"></div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<!-- Time -->
+<script type="text/javascript" src="js/wickedpicker.js"></script>
+<script type="text/javascript">
+    $('.timepicker').wickedpicker({
+        twentyFour: false
+    });
+</script>
+<!--// Time -->
+<!-- Calendar -->
+<script src="js/jquery-ui.js"></script>
+<script>
+    $(function () {
+        $("#datepicker,#datepicker1,#datepicker2,#datepicker3").datepicker({ minDate: new Date() });
+    });
+</script>
+<!-- //Calendar -->

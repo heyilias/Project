@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MalaebAlKorbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Contact">
+    <Key>
+      <PropertyRef Name="messageNo" />
+    </Key>
+    <Property Name="messageNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emails" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="allMessage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateMessage" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Player">
+    <Key>
+      <PropertyRef Name="playerNo" />
+    </Key>
+    <Property Name="playerNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="names" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emails" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="passwords" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dateCreated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK_PlayerReservation" FromRole="Player" ToRole="Reservation" />
+  </EntityType>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="reservationNo" />
+    </Key>
+    <Property Name="reservationNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="reservationTime" Type="Time" Nullable="false" Precision="7" />
+    <Property Name="reservationDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="dateReservation" Type="DateTime" Precision="3" />
+    <Property Name="playerNo" Type="Int32" />
+    <Property Name="stadiumNo" Type="Int32" />
+    <NavigationProperty Name="Player" Relationship="Self.FK_PlayerReservation" FromRole="Reservation" ToRole="Player" />
+    <NavigationProperty Name="Stadium" Relationship="Self.FK_StadiumReservation" FromRole="Reservation" ToRole="Stadium" />
+  </EntityType>
+  <EntityType Name="Stadium">
+    <Key>
+      <PropertyRef Name="stadiumNo" />
+    </Key>
+    <Property Name="stadiumNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="stadiumName" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="stadiumCity" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="stadiumCapacity" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Reservations" Relationship="Self.FK_StadiumReservation" FromRole="Stadium" ToRole="Reservation" />
+  </EntityType>
+  <Association Name="FK_PlayerReservation">
+    <End Role="Player" Type="Self.Player" Multiplicity="0..1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Player">
+        <PropertyRef Name="playerNo" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="playerNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StadiumReservation">
+    <End Role="Stadium" Type="Self.Stadium" Multiplicity="0..1" />
+    <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stadium">
+        <PropertyRef Name="stadiumNo" />
+      </Principal>
+      <Dependent Role="Reservation">
+        <PropertyRef Name="stadiumNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MalaebAlKorbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Contacts" EntityType="Self.Contact" />
+    <EntitySet Name="Players" EntityType="Self.Player" />
+    <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+    <EntitySet Name="Stadia" EntityType="Self.Stadium" />
+    <AssociationSet Name="FK_PlayerReservation" Association="Self.FK_PlayerReservation">
+      <End Role="Player" EntitySet="Players" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StadiumReservation" Association="Self.FK_StadiumReservation">
+      <End Role="Stadium" EntitySet="Stadia" />
+      <End Role="Reservation" EntitySet="Reservations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
